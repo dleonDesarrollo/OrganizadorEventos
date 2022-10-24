@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/headerFragment :: header"></div>
+    <meta charset="UTF-8">
+    <title id="pageTitle">Desafio CRUD || Editar Evento</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DSL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse show" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" th:href="@{/}">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/invitados}">Invitados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/api/eventos-creados}">API REST</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">"Organiza tus eventos"</span>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h1>Mantenedor de Eventos</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center">
+                    <h2 class="text-center">Editar Evento</h2>
+                    <div class="card-body">
+                        <form th:action="@{/guardar}" th:object="${evento}" method="post">
+                            <div class="form-group">
+                                <label>Id Evento:</label>
+                                <input type="text" name="titulo" th:field="*{idEvento}" class="form-control" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label>Título del Evento :</label>
+                                <input type="text" name="titulo" th:field="*{title}" class="form-control" placeholder="Escriba título del evento" required>
+                                <br>
+                                <label>Descripción :</label>
+                                <input type="text" name="descripcion" th:field="*{description}" class="form-control" placeholder="¿En qué consiste el evento?" required>
+                                <br>
+                                <label>Indique fecha del evento</label>
+                                <input type="datetime-local" name="fecha" th:field="*{dateEvent}" class="form-control" required>
+                            </div>
+                            <br>
+                            <div class="box-footer">
+                                <button class="btn btn-success">Modificar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="fragments/footerFragment :: footer"></footer>
+</body>
+</html>

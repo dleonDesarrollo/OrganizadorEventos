@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/headerFragment :: header"></div>
+    <meta charset="UTF-8">
+    <title id="pageTitle">Desafio CRUD</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DSL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse show" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/invitados}">Invitados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/api/eventos-creados}">API REST</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">"Organiza tus eventos"</span>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h1>Mantenedor de Eventos</h1>
+        <div class="container__btn">
+            <a id="btnAgregar" class="btn btn-success btn-lg btn-block" th:href="@{/nuevo}">Añadir Evento</a>
+        </div>
+        <div class="container__principal">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Descripción</th>
+                    <th>Fecha del evento</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="evento : ${eventos}">
+                    <td th:text="${evento.idEvento}"></td>
+                    <td th:text="${evento.title}"></td>
+                    <td th:text="${evento.description}"></td>
+                    <td th:text="${evento.dateEvent}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/editar/'+${evento.idEvento}}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{'/eliminar/'+${evento.idEvento}}">Eliminar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer th:replace="fragments/footerFragment :: footer"></footer>
+</body>
+</html>

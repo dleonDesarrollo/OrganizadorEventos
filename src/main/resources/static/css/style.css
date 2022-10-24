@@ -1,0 +1,32 @@
+:root{
+    font-family: "Segoe UI Light";
+    --primary: lightblue;
+    --secondary: #5837D0;
+}
+body{
+    background-color: var(--primary);
+}
+nav{
+    margin-bottom: 25px;
+}
+main{
+    background-color: white;
+    border-radius: 25px;
+    margin: 20px;
+}
+h1{
+    color: var(--secondary);
+    text-align: center;
+}
+.container__btn{
+    padding: 20px;
+}
+.container__principal{
+    padding: 20px;
+}
+p{
+    text-align: center;
+}
+.box-footer{
+    text-align: center;
+}
